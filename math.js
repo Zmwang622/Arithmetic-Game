@@ -11,29 +11,38 @@ function calculate(left, right, operation) {
     }
 }
 
-(function setup() {
+function generateStmt() {
     const dict = {1:"+", 2:"-", 3:"*", 4:"/"};
-     
-    window.setInterval(() => {
         let opSelector = Math.floor(Math.random() * 4) + 1;
         let right;
         let left;
 
-        if(opSelector < 3) {
-            left = Math.floor(Math.random() * 100) + 2;
-            right = Math.floor(Math.random() * left) + 1; 
-        } else if (opSelector === 4){
-            right = Math.floor(Math.random() * 13) + 2;
-            left = right * (Math.floor(Math.random() * 13) + 2);
-        } else {
-            right = Math.floor(Math.random() * 13) + 2;
-            left = (Math.floor(Math.random() * 13) + 2);
-        }
+    if(opSelector < 3) {
+        left = Math.floor(Math.random() * 100) + 2;
+        right = Math.floor(Math.random() * left) + 1; 
+    } else if (opSelector === 4){
+        right = Math.floor(Math.random() * 13) + 2;
+        left = right * (Math.floor(Math.random() * 13) + 2);
+    } else {
+        right = Math.floor(Math.random() * 13) + 2;
+        left = (Math.floor(Math.random() * 13) + 2);
+    }
         
-        let correctVal = calculate(left,right,opSelector)
+    let correctVal = calculate(left,right,opSelector)
+    let stmt = left + dict[opSelector] + right;
 
-        let stmt = left + dict[opSelector] + right +" "+ correctVal;
-        document.querySelector('.game').innerText = stmt;
+    var currentProblem = {"prob":stmt, "answer": correctVal};
+    return currentProblem;
+}
+
+(function setup() {
+     
+    window.setInterval(() => {
+        var currentProblem = generateStmt();
+        document.querySelector('.game').innerText = currentProblem.prob;
+        let inputBox = document.getElementById('answer');
+        if (inputBox !== null) {
+        }
     }, 1000);
 
 }());
