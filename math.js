@@ -18,18 +18,21 @@ function calculate(left, right, operation) {
         let opSelector = Math.floor(Math.random() * 4) + 1;
         let right;
         let left;
-        
+
         if(opSelector < 3) {
             left = Math.floor(Math.random() * 100) + 2;
             right = Math.floor(Math.random() * left) + 1; 
-        } else {
+        } else if (opSelector === 4){
             right = Math.floor(Math.random() * 13) + 2;
             left = right * (Math.floor(Math.random() * 13) + 2);
+        } else {
+            right = Math.floor(Math.random() * 13) + 2;
+            left = (Math.floor(Math.random() * 13) + 2);
         }
-
+        
         let correctVal = calculate(left,right,opSelector)
 
-        let stmt = left + dict[opSelector] + right + correctVal;
+        let stmt = left + dict[opSelector] + right +" "+ correctVal;
         document.querySelector('.game').innerText = stmt;
     }, 1000);
 
