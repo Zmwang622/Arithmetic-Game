@@ -36,13 +36,18 @@ function generateStmt() {
 }
 
 (function setup() {
-     
+    let currentProblem = generateStmt();
     window.setInterval(() => {
-        var currentProblem = generateStmt();
         document.querySelector('.game').innerText = currentProblem.prob;
         let inputBox = document.getElementById('answer');
         if (inputBox !== null) {
+            let answer = inputBox.value;
+            
+            if (answer == currentProblem.answer) {
+                currentProblem = generateStmt();
+                inputBox.value = '';
+            }
         }
-    }, 1000);
+    }, 100);
 
 }());
