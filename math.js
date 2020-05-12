@@ -35,6 +35,8 @@ function generateStmt() {
     return currentProblem;
 }
 
+let score = 0;
+
 (function setup() {
     let currentProblem = generateStmt();
     window.setInterval(() => {
@@ -46,8 +48,11 @@ function generateStmt() {
             if (answer == currentProblem.answer) {
                 currentProblem = generateStmt();
                 inputBox.value = '';
+                score++;
             }
         }
+
+        document.querySelector('.score').innerText = score;
     }, 100);
 
 }());
