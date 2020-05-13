@@ -37,7 +37,9 @@ function generateStmt() {
 
 let score = 0;
 
-(function setup() {
+function gameSetup() {
+    document.getElementById("answer").style.display = "inline";
+    document.getElementById("start").style.display = "none";
     let currentProblem = generateStmt();
     window.setInterval(() => {
         document.querySelector('.game').innerText = currentProblem.prob;
@@ -55,4 +57,4 @@ let score = 0;
         document.querySelector('.score').innerText = score;
     }, 100);
 
-}());
+}
