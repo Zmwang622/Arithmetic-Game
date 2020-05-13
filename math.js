@@ -37,7 +37,7 @@ function generateStmt() {
 
 let score = 0;
 
-function gameSetup() {
+function playGame() {
     document.getElementById("answer").style.display = "inline";
     document.getElementById("start").style.display = "none";
     let currentProblem = generateStmt();
@@ -54,7 +54,15 @@ function gameSetup() {
             }
         }
 
-        document.querySelector('.score').innerText = score;
+        document.querySelector('.score').innerText = "Score: " + score;
     }, 100);
+}
 
+function gameLost() {
+  alert("Game Over!");
+}
+
+function setupGame() {
+    playGame();
+    setTimeout(gameLost, 60000);
 }
