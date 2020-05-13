@@ -73,5 +73,5 @@ function gameLost() {
 
 function setupGame() {
     playGame();
-    setTimeout(gameLost, 6000);
+    setTimeout(gameLost, 60000);
 }
