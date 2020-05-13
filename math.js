@@ -35,13 +35,12 @@ function generateStmt() {
     return currentProblem;
 }
 
-let score = 0;
-
+let currInterval;
 function playGame() {
     document.getElementById("answer").style.display = "inline";
     document.getElementById("start").style.display = "none";
     let currentProblem = generateStmt();
-    window.setInterval(() => {
+    currInterval = window.setInterval(() => {
         document.querySelector('.game').innerText = currentProblem.prob;
         let inputBox = document.getElementById('answer');
         if (inputBox !== null) {
@@ -55,14 +54,24 @@ function playGame() {
         }
 
         document.querySelector('.score').innerText = "Score: " + score;
-    }, 100);
+    }, 50);
+}
+
+function restartGame() {
+    document.querySelector('.game').innerText = '';
+    document.querySelector('.final-score').innerText = "Final Score: " + score;
+    document.querySelector('.score').innerText = '';
+    score = 0;
+    clearInterval(currInterval);
+    startScreen();
 }
 
 function gameLost() {
   alert("Game Over!");
+  restartGame();
 }
 
 function setupGame() {
     playGame();
-    setTimeout(gameLost, 60000);
+    setTimeout(gameLost, 6000);
 }
