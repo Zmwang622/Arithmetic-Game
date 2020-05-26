@@ -38,7 +38,6 @@ function generateStmt() {
 let currInterval;
 function playGame() {
     document.getElementById("answer").style.display = "inline";
-    document.getElementById("start").style.display = "none";
     let currentProblem = generateStmt();
     currInterval = window.setInterval(() => {
         document.querySelector('.game').innerText = currentProblem.prob;
@@ -72,6 +71,9 @@ function gameLost() {
 }
 
 function setupGame() {
+    document.getElementById("pregameForm").style.display = "none";
+    document.getElementById("start").style.display = "none";
+    console.log("hello");
     playGame();
     setTimeout(gameLost, 60000);
 }

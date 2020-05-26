@@ -9,6 +9,15 @@
         <h1 class = "final-score"></h1>
         <input type="text" id="answer" name="answer">
         <h2 class = "score"></h2>
+        <form id="pregameForm">
+            <label> Addition and Subtraction Ranges: </label>
+            <input type="text" id="bottomAdd" name="bottomAdd" value="2"> to <input type="text" id="topAdd" name="topAdd" value="100">
+            <br>
+            <label> Multiplication and Division Ranges: </label>
+            (<input type="text" id="bottomLeftMultiply" name="bottomMultiply" value="2"> to <input type="text" id="topLeftMultiply" name="topMultiply" value="12">)
+            *
+            (<input type="text" id="bottomRightMultiply" name="bottomMultiply" value="2"> to <input type="text" id="topRightMultiply" name="topMultiply" value="100">)<br>
+        </form>
         <button type="button" onclick="setupGame()" id="start" style="display:none;">Start Game</button>
     </body>
     <script type="text/javascript" src="start.js"></script>
